@@ -1,0 +1,10 @@
+@use './utils/fonts';
+@use './utils/reset';
+
+body {
+  font-family: $font-body;
+}
+
+h1 {
+  font-family: $font-heading;
+}
