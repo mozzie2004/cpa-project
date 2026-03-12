@@ -49,4 +49,16 @@
     border-top: 1.5px solid #0c090e;
     border-bottom-left-radius: 3px;
   }
+
+  &:hover {
+    background-color: #0c090e;
+    color: #fee97d;
+    border-color: #fee97d;
+
+    &::before,
+    &::after {
+      background-color: #0c090e;
+      border-color: #fee97d;
+    }
+  }
 }
