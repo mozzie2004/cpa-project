@@ -1,10 +1,9 @@
 .parallelepipedBtn {
   position: relative;
-  width: 330px;
-  height: 82px;
+  padding: 24px 30px;
   background-color: #fee97d;
   border: 2.5px solid #0c090e;
-  border-bottom-right-radius: 2px;
+  border-bottom-right-radius: 3px;
   border-top-left-radius: 2px;
   font-family: $font-heading;
   font-size: 23px;
@@ -32,7 +31,7 @@
     bottom: 100%;
     left: -3.5px;
     width: calc(100% + 3.5px);
-    height: 15px;
+    height: 11px;
     transform-origin: bottom left;
     transform: skewX(-45deg);
     border-right: 1.5px solid #0c090e;
@@ -43,11 +42,11 @@
   &::after {
     top: 0;
     left: 100%;
-    width: 15px;
+    width: 11px;
     height: calc(100% + 3.5px);
     transform-origin: top left;
     transform: skewY(-45deg);
     border-top: 1.5px solid #0c090e;
-    border-bottom-left-radius: 2px;
+    border-bottom-left-radius: 3px;
   }
 }
