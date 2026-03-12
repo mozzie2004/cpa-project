@@ -17,6 +17,11 @@
     background-color 0.3s ease,
     color 0.3s ease;
 
+  @media (max-width: 768px) {
+    font-size: 18px;
+    padding: 9px 15px;
+  }
+
   &::before,
   &::after {
     content: '';
@@ -36,6 +41,10 @@
     transform: skewX(-45deg);
     border-right: 1.5px solid #0c090e;
     border-bottom-left-radius: 2px;
+
+    @media (max-width: 768px) {
+      height: 10px;
+    }
   }
 
   // Right face
@@ -48,6 +57,10 @@
     transform: skewY(-45deg);
     border-top: 1.5px solid #0c090e;
     border-bottom-left-radius: 3px;
+
+    @media (max-width: 768px) {
+      width: 10px;
+    }
   }
 
   &:hover {
