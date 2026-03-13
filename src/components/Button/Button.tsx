@@ -1,6 +1,10 @@
 import styles from './Button.module.scss';
 
-const Button = () => {
-  return <button className={styles.parallelepipedBtn}>Click Me</button>;
+interface ButtonProps {
+  label: string;
+}
+
+const Button = ({ label }: ButtonProps) => {
+  return <button className={styles.parallelepipedBtn}>{label}</button>;
 };
 export default Button;
