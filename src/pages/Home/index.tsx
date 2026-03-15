@@ -1,3 +1,7 @@
+import { MultiplyBenefits } from '@features/MultiplyBenefits';
+import { MultiplyWithUs } from '@features/MultiplyWithUs';
+import { ScrollSystem } from '@features/ScrollSystem';
+
 export const HomePage = () => {
-  return <h1>Home page</h1>;
+  return <ScrollSystem sections={[MultiplyBenefits, MultiplyWithUs]} />;
 };
