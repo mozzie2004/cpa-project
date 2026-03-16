@@ -1,10 +1,14 @@
 import styles from './Button.module.scss';
 
-interface ButtonProps {
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   label: string;
 }
 
-const Button = ({ label }: ButtonProps) => {
-  return <button className={styles.parallelepipedBtn}>{label}</button>;
+const Button = ({ label, ...props }: ButtonProps) => {
+  return (
+    <button className={styles.parallelepipedBtn} {...props}>
+      {label}
+    </button>
+  );
 };
 export default Button;
