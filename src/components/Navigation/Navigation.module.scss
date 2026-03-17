@@ -57,22 +57,28 @@
   }
 }
 
-.langSwitcher {
+.langSwitcher,
+.overlayLangSwitcher {
   display: flex;
   align-items: center;
   color: $color-yellow;
 }
 
-.langBtn {
+.langBtn,
+.overlayLangBtn {
   font: inherit;
   text-transform: inherit;
   color: $color-white;
 }
 
-.langBtnActive {
+.langBtnActive,
+.overlayLangBtnActive {
   font: inherit;
   text-transform: inherit;
   color: $color-yellow;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 2px;
+  text-decoration: underline;
 }
 
 .menuBtn {
@@ -98,7 +104,13 @@
   inset: 0;
   background-color: $color-background;
   z-index: 20;
-  padding: 10px 5px 0 16px;
+  font-family: $font-heading;
+  font-size: 32px;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 2px;
+  color: $color-yellow;
 
   @include tablet {
     display: block;
@@ -115,15 +127,44 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-top: 6px;
-}
-
-.closeBtn {
-  padding-right: 15px;
+  padding: 16px 20px 16px;
 }
 
 .closeBtn svg {
   display: block;
   width: 20px;
   height: auto;
+}
+
+.overlayLinks {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  list-style: none;
+  margin-top: 80px;
+}
+
+.overlayLink {
+  display: block;
+  text-decoration: underline;
+  padding: 10px;
+}
+
+.socialLinks {
+  display: flex;
+  justify-content: center;
+  gap: 35px;
+  margin-top: 50px;
+}
+
+.socialLink svg {
+  display: block;
+  width: 30px;
+  height: auto;
+}
+
+.overlayLangSwitcher {
+  justify-content: center;
+  margin-top: 63px;
 }
