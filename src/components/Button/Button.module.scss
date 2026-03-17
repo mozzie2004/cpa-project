@@ -1,0 +1,77 @@
+.parallelepipedBtn {
+  position: relative;
+  padding: 24px 30px;
+  background-color: $color-yellow;
+  border: 2.5px solid $color-black;
+  border-bottom-right-radius: 3px;
+  border-top-left-radius: 2px;
+  font-family: $font-heading;
+  font-size: 23px;
+  font-weight: bold;
+  letter-spacing: 20%;
+  color: $color-black;
+  text-transform: uppercase;
+  cursor: pointer;
+  outline: none;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+
+  @include tablet {
+    font-size: 18px;
+    padding: 9px 15px;
+  }
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    background-color: $color-yellow;
+    border: 2.5px solid $color-black;
+    transition: background-color 0.3s ease;
+  }
+
+  // Top face
+  &::before {
+    bottom: 100%;
+    left: -3.5px;
+    width: calc(100% + 3.5px);
+    height: 11px;
+    transform-origin: bottom left;
+    transform: skewX(-45deg);
+    border-right: 1.5px solid $color-black;
+    border-bottom-left-radius: 2px;
+
+    @include tablet {
+      height: 10px;
+    }
+  }
+
+  // Right face
+  &::after {
+    top: 0;
+    left: 100%;
+    width: 11px;
+    height: calc(100% + 3.5px);
+    transform-origin: top left;
+    transform: skewY(-45deg);
+    border-top: 1.5px solid $color-black;
+    border-bottom-left-radius: 3px;
+
+    @include tablet {
+      width: 10px;
+    }
+  }
+
+  &:hover {
+    background-color: $color-black;
+    color: $color-yellow;
+    border-color: $color-yellow;
+
+    &::before,
+    &::after {
+      background-color: $color-black;
+      border-color: $color-yellow;
+    }
+  }
+}
