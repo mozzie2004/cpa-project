@@ -91,3 +91,39 @@
     display: block;
   }
 }
+
+.overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background-color: $color-background;
+  z-index: 20;
+  padding: 10px 5px 0 16px;
+
+  @include tablet {
+    display: block;
+  }
+}
+
+.logoMobile svg {
+  display: block;
+  width: 44px;
+  height: auto;
+}
+
+.overlayHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 6px;
+}
+
+.closeBtn {
+  padding-right: 15px;
+}
+
+.closeBtn svg {
+  display: block;
+  width: 20px;
+  height: auto;
+}
