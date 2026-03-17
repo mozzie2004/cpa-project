@@ -1,0 +1,64 @@
+.nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .rightGroup {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-family: $font-heading;
+    font-size: 20px;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+  padding: 20px 40px;
+  z-index: 10;
+}
+
+.logo svg {
+  display: block;
+  width: 45px;
+  height: auto;
+}
+
+.links {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+}
+
+.link {
+  display: block;
+  line-height: 1;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  color: $color-yellow;
+  padding: 10px;
+
+  &:hover {
+    color: $color-white;
+  }
+}
+
+.langSwitcher {
+  display: flex;
+  align-items: center;
+  color: $color-yellow;
+}
+
+.langBtn {
+  font: inherit;
+  text-transform: inherit;
+  color: $color-white;
+}
+
+.langBtnActive {
+  font: inherit;
+  text-transform: inherit;
+  color: $color-yellow;
+}
