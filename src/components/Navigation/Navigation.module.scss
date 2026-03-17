@@ -15,15 +15,27 @@
     font-size: 20px;
     font-weight: 700;
     text-transform: uppercase;
+
+    @include tablet {
+      display: none;
+    }
   }
-  padding: 20px 40px;
+  padding: 30px 50px 0;
   z-index: 10;
+
+  @include tablet {
+    padding: 10px 5px 0 16px;
+  }
 }
 
 .logo svg {
   display: block;
   width: 45px;
   height: auto;
+
+  @include tablet {
+    width: 26px;
+  }
 }
 
 .links {
@@ -61,4 +73,21 @@
   font: inherit;
   text-transform: inherit;
   color: $color-yellow;
+}
+
+.menuBtn {
+  display: none;
+  font-family: $font-heading;
+  font-size: 20px;
+  font-weight: 700;
+  text-transform: uppercase;
+  line-height: 1;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  color: $color-yellow;
+  padding: 10px;
+
+  @include tablet {
+    display: block;
+  }
 }

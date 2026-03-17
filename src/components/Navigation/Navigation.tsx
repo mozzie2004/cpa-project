@@ -33,6 +33,9 @@ const Navigation = () => {
           </button>
         </div>
       </div>
+      <button className={styles.menuBtn} type="button">
+        Меню
+      </button>
     </nav>
   );
 };
