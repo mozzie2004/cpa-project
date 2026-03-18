@@ -1,9 +1,11 @@
 import Navigation from '@components/Navigation/Navigation';
+import { HeroSection } from '@features/HeroSection';
 
 export const HomePage = () => {
   return (
-    <div style={{ height: '100vh', background: '#9E13E0' }}>
+    <>
       <Navigation />
-    </div>
+      <HeroSection />
+    </>
   );
 };
