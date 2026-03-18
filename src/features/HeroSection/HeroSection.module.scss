@@ -60,15 +60,5 @@
   position: absolute;
   bottom: 50px;
   left: 50px;
-  display: flex;
-  gap: 30px;
   z-index: 2;
-}
-
-.socialLink svg {
-  display: block;
-  width: 30px;
-  height: auto;
-  fill: $color-white;
-  margin: 5px;
 }

@@ -1,9 +1,7 @@
 import { useState } from 'react';
 import Logo from '@assets/icons/logo.svg?react';
 import CloseIcon from '@assets/icons/close-icon.svg?react';
-import Instagram from '@assets/icons/instagram.svg?react';
-import Telegram from '@assets/icons/telegram.svg?react';
-import Linkedin from '@assets/icons/linkedin.svg?react';
+import SocialLinks from '@components/SocialLinks/SocialLinks';
 import styles from './Navigation.module.scss';
 
 const navLinks = [
@@ -88,17 +86,7 @@ const Navigation = () => {
             ))}
           </ul>
 
-          <div className={styles.socialLinks}>
-            <a href="#" className={styles.socialLink}>
-              <Instagram />
-            </a>
-            <a href="#" className={styles.socialLink}>
-              <Telegram />
-            </a>
-            <a href="#" className={styles.socialLink}>
-              <Linkedin />
-            </a>
-          </div>
+          <SocialLinks className={styles.socialIcons} />
 
           <div className={styles.overlayLangSwitcher}>
             <button className={styles.overlayLangBtn} type="button">

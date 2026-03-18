@@ -1,0 +1,12 @@
+.socialLinks {
+  display: flex;
+  gap: 30px;
+}
+
+.socialLinks svg {
+  display: block;
+  width: 30px;
+  height: auto;
+  fill: $color-white;
+  margin: 5px;
+}
