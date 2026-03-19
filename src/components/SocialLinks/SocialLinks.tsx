@@ -1,7 +1,7 @@
 import Instagram from '@assets/icons/instagram.svg?react';
 import Telegram from '@assets/icons/telegram.svg?react';
 import Linkedin from '@assets/icons/linkedin.svg?react';
-import './SocialLinks.scss';
+import styles from './SocialLinks.module.scss';
 
 interface SocialLinksProps {
   className?: string;
@@ -9,7 +9,7 @@ interface SocialLinksProps {
 
 const SocialLinks = ({ className }: SocialLinksProps) => {
   return (
-    <div className={`socialLinks ${className || ''}`}>
+    <div className={`${styles.socialLinks} ${className || ''}`}>
       <a href="#">
         <Instagram />
       </a>
