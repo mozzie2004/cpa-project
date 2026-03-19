@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import Instagram from '@assets/icons/instagram.svg?react';
 import Telegram from '@assets/icons/telegram.svg?react';
 import Linkedin from '@assets/icons/linkedin.svg?react';
@@ -9,7 +10,7 @@ interface SocialLinksProps {
 
 const SocialLinks = ({ className }: SocialLinksProps) => {
   return (
-    <div className={`${styles.socialLinks} ${className || ''}`}>
+    <div className={clsx(styles.socialLinks, className)}>
       <a href="#">
         <Instagram />
       </a>
