@@ -1,0 +1,95 @@
+.hero {
+  position: relative;
+  height: 100dvh;
+  padding-left: 50px;
+  padding-top: 224px;
+  background: linear-gradient(
+    111.06deg,
+    #dc8400 -3.49%,
+    #560080 49.69%,
+    #220032 91.86%
+  );
+  overflow: hidden;
+
+  @include tablet {
+    padding-left: 16px;
+    padding-top: 150px;
+    background:
+      linear-gradient(
+        121.08deg,
+        #9500dc -3.37%,
+        #560080 56.37%,
+        #220032 102.54%
+      ),
+      linear-gradient(0deg, #560080, #560080);
+  }
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  max-width: 750px;
+}
+
+.heading {
+  font-family: $font-heading;
+  font-size: 80px;
+  font-weight: 700;
+  line-height: 0.9;
+  letter-spacing: -1.74px;
+  text-transform: uppercase;
+  color: $color-white;
+
+  @include tablet {
+    font-size: 38px;
+  }
+}
+
+.accent {
+  color: $color-yellow;
+}
+
+.subtitle {
+  margin-top: 12px;
+  font-family: $font-body;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.2;
+  color: $color-white;
+  margin-bottom: 30px;
+
+  @include tablet {
+    font-size: 16px;
+  }
+}
+
+.imageWrapper {
+  position: absolute;
+  right: 10px;
+  top: 10%;
+  z-index: 1;
+  width: 55%;
+
+  @include tablet {
+    top: 50%;
+    right: -34px;
+    width: 125%;
+  }
+}
+
+.snakeImage {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.socialIcons {
+  position: absolute;
+  bottom: 50px;
+  left: 50px;
+  z-index: 2;
+
+  @include tablet {
+    display: none;
+  }
+}
