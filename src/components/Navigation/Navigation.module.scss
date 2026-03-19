@@ -102,7 +102,9 @@
   display: none;
   position: fixed;
   inset: 0;
-  background-color: $color-background;
+  background:
+    linear-gradient(121.08deg, #9500dc -3.37%, #560080 56.37%, #220032 102.54%),
+    linear-gradient(0deg, #560080, #560080);
   z-index: 20;
   font-family: $font-heading;
   font-size: 32px;
