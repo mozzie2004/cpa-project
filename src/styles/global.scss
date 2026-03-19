@@ -3,8 +3,19 @@
 
 body {
   font-family: $font-body;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 h1 {
   font-family: $font-heading;
+}
+
+.section {
+  height: 100dvh;
+  width: 100%;
+  @include tablet {
+    height: auto;
+  }
 }
