@@ -1,0 +1,13 @@
+.title {
+  font-family: $font-heading;
+  font-size: 40px;
+  line-height: 0.9;
+  font-weight: 700;
+  text-align: right;
+  color: $color-yellow;
+  text-transform: uppercase;
+  letter-spacing: -1.74px;
+  @include tablet {
+    display: none;
+  }
+}
