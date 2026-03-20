@@ -1,0 +1,102 @@
+.section {
+  position: relative;
+  height: 100dvh;
+  padding: 60px 48px 124px;
+  background-color: $color-dark-background;
+  display: flex;
+  flex-direction: column;
+}
+
+.layout {
+  flex: 1;
+  display: flex;
+  gap: 24px;
+  margin-top: 70px;
+}
+
+.left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(
+    -115.4deg,
+    #9500dc 17.61%,
+    #560080 57.18%,
+    #220032 88.56%
+  );
+  padding: 38px 30px 0;
+  border-radius: 8px;
+}
+
+.description {
+  font-family: $font-body;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1.2;
+  color: $color-white;
+  margin-bottom: 26px;
+}
+
+.imageWrapper {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.snakeImage {
+  display: block;
+  width: 85%;
+}
+
+.grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(6, 1fr);
+  gap: 24px;
+}
+
+.card:nth-child(1) {
+  grid-column: 1;
+  grid-row: 1 / 4;
+}
+.card:nth-child(2) {
+  grid-column: 1;
+  grid-row: 4 / 7;
+}
+.card:nth-child(3) {
+  grid-column: 2;
+  grid-row: 1 / 3;
+}
+.card:nth-child(4) {
+  grid-column: 2;
+  grid-row: 3 / 5;
+}
+.card:nth-child(5) {
+  grid-column: 2;
+  grid-row: 5 / 7;
+}
+
+.card {
+  padding: 20px;
+  background-color: $color-background;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.cardTitle {
+  font-family: $font-heading;
+  font-size: 28px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: $color-yellow;
+  margin-bottom: 10px;
+}
+
+.cardText {
+  font-family: $font-body;
+  font-size: 20px;
+  line-height: 1.2;
+  color: $color-white;
+}
