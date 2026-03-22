@@ -1,0 +1,22 @@
+{
+  "en": {
+    "heading_1": "Practice",
+    "heading_2": "makes",
+    "heading_accent": "profit",
+    "subtitle": "We provide effective solutions, tested and refined on our own products and ad budgets",
+    "button": "Get in Touch",
+    "nav": ["Team", "Benefits", "Join us"],
+    "menu": "Menu",
+    "home": "Home"
+  },
+  "ru": {
+    "heading_1": "Practice",
+    "heading_2": "makes",
+    "heading_accent": "profit",
+    "subtitle": "Предлагаем эффективные решения, которые уже протестили на своих продуктах и бюджетах",
+    "button": "Получить профит",
+    "nav": ["Команда", "Преимущества", "С нами"],
+    "menu": "Меню",
+    "home": "Главная"
+  }
+}
