@@ -5,6 +5,12 @@
   background-color: $color-dark-background;
   display: flex;
   flex-direction: column;
+
+  @include tablet {
+    padding: 20px 16px;
+    background-color: #560080;
+    height: auto;
+  }
 }
 
 .layout {
@@ -12,6 +18,11 @@
   display: flex;
   gap: 24px;
   margin-top: 70px;
+
+  @include tablet {
+    flex-direction: column;
+    margin-top: 20px;
+  }
 }
 
 .left {
@@ -26,6 +37,10 @@
   );
   padding: 38px 30px 0;
   border-radius: 8px;
+
+  @include tablet {
+    padding: 20px 10px 0;
+  }
 }
 
 .description {
@@ -55,6 +70,12 @@
   grid-template-columns: 1fr 1fr;
   grid-template-rows: repeat(6, 1fr);
   gap: 24px;
+
+  @include tablet {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    gap: 20px;
+  }
 }
 
 .card:nth-child(1) {
@@ -79,10 +100,17 @@
 }
 
 .card {
-  padding: 20px;
   background-color: $color-background;
   border-radius: 8px;
   padding: 10px;
+
+  @include tablet {
+    &:nth-child(n) {
+      grid-column: 1;
+      grid-row: auto;
+    }
+    padding: 10px 10px 20px;
+  }
 }
 
 .cardTitle {
