@@ -2,16 +2,15 @@ import { useState } from 'react';
 import Logo from '@assets/icons/logo.svg?react';
 import CloseIcon from '@assets/icons/close-icon.svg?react';
 import SocialLinks from '@components/SocialLinks/SocialLinks';
+import heroData from '@data/hero.json';
 import styles from './Navigation.module.scss';
 
-const navLinks = [
-  { label: 'Команда', href: '#team' },
-  { label: 'Преимущества', href: '#benefits' },
-  { label: 'С нами', href: '#withUs' }
-];
+const navHrefs = ['#team', '#benefits', '#withUs'];
+const lang = 'en';
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const t = heroData[lang];
 
   return (
     <>
@@ -21,9 +20,9 @@ const Navigation = () => {
         </a>
         <div className={styles.rightGroup}>
           <ul className={styles.links}>
-            {navLinks.map(({ label, href }) => (
-              <li key={href}>
-                <a href={href} className={styles.link}>
+            {t.nav.map((label, i) => (
+              <li key={navHrefs[i]}>
+                <a href={navHrefs[i]} className={styles.link}>
                   {label}
                 </a>
               </li>
@@ -44,7 +43,7 @@ const Navigation = () => {
           type="button"
           onClick={() => setIsMenuOpen(true)}
         >
-          Меню
+          {t.menu}
         </button>
       </nav>
 
@@ -70,13 +69,13 @@ const Navigation = () => {
                 className={styles.overlayLink}
                 onClick={() => setIsMenuOpen(false)}
               >
-                Главная
+                {t.home}
               </a>
             </li>
-            {navLinks.map(({ label, href }) => (
-              <li key={href}>
+            {t.nav.map((label, i) => (
+              <li key={navHrefs[i]}>
                 <a
-                  href={href}
+                  href={navHrefs[i]}
                   className={styles.overlayLink}
                   onClick={() => setIsMenuOpen(false)}
                 >
