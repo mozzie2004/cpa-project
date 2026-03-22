@@ -2,6 +2,9 @@ import type { SectionProps } from '@common/types';
 import gsap from 'gsap';
 import { useEffect, useRef, type FC } from 'react';
 
+import styles from './MultiplyWithUs.module.scss';
+import SectionTitle from '@components/SectionTitle';
+
 export const MultiplyWithUs: FC<SectionProps> = ({ onRegister }) => {
   const rootRef = useRef<HTMLElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
@@ -27,17 +30,10 @@ export const MultiplyWithUs: FC<SectionProps> = ({ onRegister }) => {
   }, [onRegister]);
 
   return (
-    <section
-      style={{
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center'
-      }}
-      id="withUs"
-      ref={rootRef}
-      className="section"
-    >
-      <h2 ref={contentRef}>MultiplyWithUs</h2>
+    <section id="withUs" ref={rootRef} className={styles.multiply}>
+      <div ref={contentRef}>
+        <SectionTitle>MULTIPLY WITH US</SectionTitle>
+      </div>
     </section>
   );
 };
