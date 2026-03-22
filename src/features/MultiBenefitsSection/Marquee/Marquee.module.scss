@@ -1,0 +1,34 @@
+.marquee {
+  padding: 10px 0;
+  overflow: hidden;
+  border-top: 3px solid $color-yellow;
+  border-bottom: 3px solid $color-yellow;
+  min-height: clamp(40px, 10vh, 96px);
+  transform: rotate(1deg);
+  &__line {
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    font-family: $font-heading;
+    color: $color-yellow;
+    font-weight: 300;
+    font-size: clamp(20px, 8vh, 70px);
+    line-height: 1;
+    text-transform: uppercase;
+    svg {
+      margin: 0 45px;
+      path {
+        fill: $color-yellow;
+      }
+    }
+  }
+
+  @include tablet {
+    margin-top: 60px;
+    min-height: 52px;
+    &__line {
+      font-size: 35px;
+      border-width: 1.5px;
+    }
+  }
+}

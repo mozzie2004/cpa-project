@@ -3,8 +3,9 @@ import { gsap } from 'gsap';
 import { Observer } from 'gsap/all';
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 import type { SectionProps, SectionRef } from '@common/types';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-gsap.registerPlugin(Observer, ScrollToPlugin);
+gsap.registerPlugin(Observer, ScrollToPlugin, ScrollTrigger);
 
 interface ScrollSystemProps {
   sections: FC<SectionProps>[];
@@ -42,8 +43,6 @@ export const ScrollSystem: FC<ScrollSystemProps> = ({ sections }) => {
             '',
             `#${nextSection.element.id || index}`
           );
-          await nextSection.playIn(direction);
-          isAnimating.current = false;
         }
       };
 
@@ -67,6 +66,27 @@ export const ScrollSystem: FC<ScrollSystemProps> = ({ sections }) => {
           if (targetIdx !== -1) currentIndex.current = targetIdx;
         }
       }
+
+      sectionRefs.current.forEach((section) => {
+        ScrollTrigger.create({
+          trigger: section?.element,
+          start: 'top bottom',
+          onEnter: async (self) => {
+            if (section?.element) {
+              isAnimating.current = true;
+              await section?.playIn(self.direction);
+              isAnimating.current = false;
+            }
+          },
+          onEnterBack: async (self) => {
+            if (section?.element) {
+              isAnimating.current = true;
+              await section?.playIn(self.direction);
+              isAnimating.current = false;
+            }
+          }
+        });
+      });
     });
 
     return () => mm.revert();
