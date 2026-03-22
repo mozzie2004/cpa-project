@@ -3,6 +3,7 @@ import SectionTitle from '@components/SectionTitle';
 import { api } from '@services/api';
 import type { TasksResponse } from '@common/types';
 import snakeImg from '@assets/images/snake-tasks.webp';
+import { highlightText } from '@common/utils/highlightText';
 import styles from './MultiTasksSection.module.scss';
 
 const MultiTasksSection = () => {
@@ -18,7 +19,11 @@ const MultiTasksSection = () => {
 
       <div className={styles.layout}>
         <div className={styles.left}>
-          {data && <p className={styles.description}>{data.description}</p>}
+          {data && (
+            <p className={styles.description}>
+              {highlightText(data.description, 'in-house team', styles.highlight)}
+            </p>
+          )}
           <div className={styles.imageWrapper}>
             <img
               className={styles.snakeImage}
