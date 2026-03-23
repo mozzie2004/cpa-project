@@ -1,4 +1,5 @@
 .benefits {
+  position: relative;
   height: 100dvh;
   padding: 60px 0 46px;
   background: linear-gradient(
@@ -18,7 +19,7 @@
     justify-content: space-between;
   }
   &__content {
-    padding: clamp(20px, 6.5vh, 80px) 50px clamp(20px, 7vh, 80px);
+    padding: clamp(20px, 6.5vh, 80px) 50px 155px;
     display: flex;
     justify-content: space-between;
     flex: 1;
@@ -34,6 +35,9 @@
     font-weight: 700;
     overflow-wrap: break-word;
     line-height: 1;
+  }
+  &__highlight {
+    color: $color-yellow;
   }
   &__description {
     margin-top: 20px;
@@ -94,6 +98,7 @@
       z-index: 1;
       width: 100%;
       min-height: unset;
+      order: 3;
     }
     &__image {
       display: none;
@@ -106,9 +111,6 @@
       margin-top: 16px;
       font-size: 16px;
       line-height: 20px;
-    }
-    &__items {
-      margin-top: 60px;
     }
     &__item {
       font-size: 20px;

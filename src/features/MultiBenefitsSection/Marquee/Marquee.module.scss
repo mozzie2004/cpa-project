@@ -5,6 +5,10 @@
   border-bottom: 3px solid $color-yellow;
   min-height: clamp(40px, 10vh, 96px);
   transform: rotate(1deg);
+  min-width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
   &__line {
     white-space: nowrap;
     display: inline-flex;
@@ -17,6 +21,8 @@
     text-transform: uppercase;
     svg {
       margin: 0 45px;
+      width: 45px;
+      height: auto;
       path {
         fill: $color-yellow;
       }
@@ -24,8 +30,12 @@
   }
 
   @include tablet {
-    margin-top: 60px;
+    position: static;
+    order: 2;
     min-height: 52px;
+    margin: 32px 0;
+    width: 100vw;
+    margin-left: -16px;
     &__line {
       font-size: 35px;
       border-width: 1.5px;

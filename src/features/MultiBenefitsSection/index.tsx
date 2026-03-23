@@ -6,6 +6,7 @@ import gsap from 'gsap';
 
 import snakeImg from '@assets/images/snake-benefits.webp';
 import Marquee from './Marquee';
+import { highlightText } from '@common/utils/highlightText';
 
 const MultiBenefitsSection: FC<SectionProps> = ({ onRegister }) => {
   const rootRef = useRef<HTMLElement>(null);
@@ -81,7 +82,11 @@ const MultiBenefitsSection: FC<SectionProps> = ({ onRegister }) => {
         <div className={styles.benefits__content}>
           <div ref={leftContentRef} className={styles.benefits__left}>
             <p className={styles.benefits__subtitle}>
-              Results can only be guaranteed when you control every step
+              {highlightText(
+                'Results can only be guaranteed when you control every step',
+                'guaranteed',
+                styles.benefits__highlight
+              )}
             </p>
             <p className={styles.benefits__description}>
               That’s why we built a full-time in-house team and custom
@@ -104,8 +109,8 @@ const MultiBenefitsSection: FC<SectionProps> = ({ onRegister }) => {
               <img src={snakeImg} alt="snake" />
             </div>
           </div>
+          <Marquee />
         </div>
-        <Marquee />
       </div>
     </section>
   );
