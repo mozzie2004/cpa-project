@@ -9,7 +9,10 @@ import Tab from './Tab';
 import clsx from 'clsx';
 import ArrowIcon from '@assets/icons/arrow.svg?react';
 import Button from '@components/Button/Button';
+import { useModal } from '@features/ModalProvider';
+
 export const MultiplyWithUs: FC<SectionProps> = ({ onRegister }) => {
+  const { openModal } = useModal();
   const rootRef = useRef<HTMLElement>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
@@ -96,7 +99,10 @@ export const MultiplyWithUs: FC<SectionProps> = ({ onRegister }) => {
                       <ArrowIcon className={styles.multiply__arrow} />
                     </Fragment>
                   ))}
-                  <Button label={item.btn} />
+                  <Button
+                    label={item.btn}
+                    onClick={() => openModal('form', {})}
+                  />
                 </div>
               ))}
             </div>

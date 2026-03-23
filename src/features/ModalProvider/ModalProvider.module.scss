@@ -1,0 +1,41 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal {
+  position: relative;
+  padding: 60px 30px;
+  border-radius: 12px;
+  border: 1px solid $color-background;
+  background: $color-white;
+  &__close {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 44px;
+    height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    svg {
+      path {
+        fill: $color-background;
+      }
+    }
+    cursor: pointer;
+  }
+  &__logo {
+    text-align: center;
+    svg {
+      path {
+        fill: $color-background;
+      }
+    }
+  }
+}
