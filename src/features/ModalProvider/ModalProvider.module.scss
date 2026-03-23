@@ -1,4 +1,5 @@
 .overlay {
+  padding: 16px;
   position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.5);
@@ -14,6 +15,8 @@
   border-radius: 12px;
   border: 1px solid $color-background;
   background: $color-white;
+  width: 100%;
+  max-width: 558px;
   &__close {
     position: absolute;
     right: 0;
@@ -37,5 +40,9 @@
         fill: $color-background;
       }
     }
+  }
+
+  @include tablet {
+    padding: 60px 20px;
   }
 }

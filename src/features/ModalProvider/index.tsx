@@ -13,11 +13,13 @@ import Form from '@components/Form';
 import styles from './ModalProvider.module.scss';
 import CloseIcon from '@assets/icons/close-icon.svg?react';
 import LogoIcon from '@assets/icons/logo.svg?react';
+import SuccessMessage from '@components/SuccessMessage';
 
-type ModalKey = 'form';
+type ModalKey = 'form' | 'success';
 
 type ModalRegistry = {
   form: Record<string, unknown>;
+  success: Record<string, unknown>;
 };
 
 type ModalState<K extends ModalKey = ModalKey> = {
@@ -41,7 +43,8 @@ export const useModal = () => {
 const modalComponents: {
   [K in ModalKey]: FC<ModalRegistry[K] & { onClose: () => void }>;
 } = {
-  form: Form
+  form: Form,
+  success: SuccessMessage
 };
 
 export const ModalProvider: FC<{ children: ReactNode }> = ({ children }) => {

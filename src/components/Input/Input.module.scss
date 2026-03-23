@@ -1,0 +1,44 @@
+.inputWrapper {
+  position: relative;
+}
+
+.input {
+  display: block;
+  width: 100%;
+  background: $color-white;
+  border-radius: 8px;
+  border: 1px solid rgba(158, 19, 224, 0.3);
+  padding: 8px 12px;
+  font-family: $font-body;
+  color: $color-black;
+  font-size: 16px;
+  line-height: 1;
+  font-weight: 300;
+  outline: none;
+  &:focus {
+    border-color: $color-background;
+  }
+
+  @include tablet {
+    font-size: 14px;
+  }
+}
+
+.placeholder {
+  font-family: $font-body;
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: $color-black;
+  pointer-events: none;
+  font-size: 16px;
+  line-height: 1;
+  font-weight: 300;
+  &__star {
+    color: $color-background;
+  }
+  @include tablet {
+    font-size: 14px;
+  }
+}
