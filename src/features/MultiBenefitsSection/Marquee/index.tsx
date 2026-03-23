@@ -10,18 +10,20 @@ const Marquee = () => {
     const el = trackRef.current;
     if (!el) return;
 
-    const width = el.scrollWidth / 3;
+    document.fonts.ready.then(() => {
+      const width = el.scrollWidth / 3;
 
-    gsap.fromTo(
-      el,
-      { x: 0 },
-      {
-        x: -width - 145,
-        duration: 8,
-        ease: 'linear',
-        repeat: -1
-      }
-    );
+      gsap.fromTo(
+        el,
+        { x: 0 },
+        {
+          x: -width,
+          duration: 8,
+          ease: 'linear',
+          repeat: -1
+        }
+      );
+    });
   }, []);
 
   return (
