@@ -25,7 +25,7 @@ const MultiBenefitsSection: FC<SectionProps> = ({ onRegister }) => {
           .fromTo(
             wrapperRef.current,
             {
-              y: window.innerHeight,
+              y: direction * window.innerHeight,
               opacity: 0
             },
             { y: 0, opacity: 1, duration: 0.8 }
@@ -33,10 +33,7 @@ const MultiBenefitsSection: FC<SectionProps> = ({ onRegister }) => {
           .fromTo(
             leftContentRef.current,
             {
-              x:
-                direction < 0
-                  ? (leftContentRef.current?.scrollWidth || 0) + 50
-                  : -(leftContentRef.current?.scrollWidth || 0) + 50,
+              x: -(leftContentRef.current?.scrollWidth || 0) + 50,
               opacity: 0
             },
             { x: 0, opacity: 1, duration: 0.8 },
@@ -61,7 +58,7 @@ const MultiBenefitsSection: FC<SectionProps> = ({ onRegister }) => {
             '-=0.2'
           );
       },
-      playOut: async () => {
+      playOut: async (direction) => {
         const tl = gsap.timeline();
 
         await tl.fromTo(
@@ -70,7 +67,11 @@ const MultiBenefitsSection: FC<SectionProps> = ({ onRegister }) => {
             y: 0,
             opacity: 1
           },
-          { y: window.innerHeight, opacity: 1, duration: 0.8 }
+          {
+            y: -direction * window.innerHeight,
+            opacity: 1,
+            duration: 0.8
+          }
         );
       }
     });

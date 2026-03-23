@@ -4,6 +4,7 @@ import { Observer } from 'gsap/all';
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 import type { SectionProps, SectionRef } from '@common/types';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useLocation } from 'react-router';
 
 gsap.registerPlugin(Observer, ScrollToPlugin, ScrollTrigger);
 
@@ -15,6 +16,8 @@ export const ScrollSystem: FC<ScrollSystemProps> = ({ sections }) => {
   const sectionRefs = useRef<(SectionRef | null)[]>([]);
   const currentIndex = useRef(0);
   const isAnimating = useRef(false);
+
+  const { hash } = useLocation();
 
   useEffect(() => {
     const mm = gsap.matchMedia();
@@ -55,18 +58,6 @@ export const ScrollSystem: FC<ScrollSystemProps> = ({ sections }) => {
         preventDefault: true
       });
 
-      const hash = window.location.hash;
-      if (hash) {
-        const target = document.querySelector(hash) as HTMLElement;
-        if (target) {
-          gsap.set(window, { scrollTo: { y: target } });
-          const targetIdx = sectionRefs.current.findIndex(
-            (item) => item?.element === target
-          );
-          if (targetIdx !== -1) currentIndex.current = targetIdx;
-        }
-      }
-
       sectionRefs.current.forEach((section) => {
         ScrollTrigger.create({
           trigger: section?.element,
@@ -91,6 +82,19 @@ export const ScrollSystem: FC<ScrollSystemProps> = ({ sections }) => {
 
     return () => mm.revert();
   }, [sections.length]);
+
+  useEffect(() => {
+    if (hash) {
+      const target = document.querySelector(hash) as HTMLElement;
+
+      if (target) {
+        const targetIdx = sectionRefs.current.findIndex(
+          (item) => item?.element === target
+        );
+        if (targetIdx !== -1) currentIndex.current = targetIdx;
+      }
+    }
+  }, [hash]);
 
   return (
     <main>
