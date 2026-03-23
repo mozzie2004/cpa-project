@@ -5,6 +5,7 @@
   background-color: $color-dark-background;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 
   @include tablet {
     padding: 20px 16px;
