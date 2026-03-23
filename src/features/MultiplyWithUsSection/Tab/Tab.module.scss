@@ -1,6 +1,5 @@
 .tab {
   font-family: $font-heading;
-  padding: 33px 57px;
   padding: clamp(20px, 2.3vw, 33px) clamp(20px, 4vw, 57px);
   border-radius: 100px;
   border: 3px solid $color-yellow;
@@ -12,7 +11,6 @@
   font-size: clamp(20px, 2.3vw, 33px);
   line-height: 24px;
   font-weight: 700;
-  color: $color-yellow;
   cursor: pointer;
   svg {
     path {
