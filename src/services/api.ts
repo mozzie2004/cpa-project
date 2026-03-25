@@ -1,6 +1,7 @@
 import type { Lang } from '@common/types';
 import { TasksResponseSchema } from '@common/schemas/tasks';
 import { BenefitsResponseSchema } from '@common/schemas/benefits';
+import { MultiplyResponseSchema } from '@common/schemas/multiply';
 
 const BASE_URL = import.meta.env.VITE_BASE_URL;
 const API_KEY = import.meta.env.VITE_API_KEY;
@@ -37,5 +38,10 @@ export const api = {
   getBenefits: async () => {
     const data = await request('benefits');
     return BenefitsResponseSchema.parse(data);
+  },
+
+  getMultiply: async () => {
+    const data = await request('multiply');
+    return MultiplyResponseSchema.parse(data);
   }
 };
