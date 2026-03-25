@@ -6,10 +6,12 @@ import heroData from '@data/hero.json';
 import type { SectionProps } from '@common/types';
 import snakeImg from '@assets/images/snake.webp';
 import styles from './HeroSection.module.scss';
+import { useModal } from '@hooks/useModal';
 
 const lang = 'en';
 
 export const HeroSection: FC<SectionProps> = ({ onRegister }) => {
+  const { openModal } = useModal();
   const t = heroData[lang];
 
   const rootRef = useRef<HTMLElement>(null);
@@ -46,7 +48,7 @@ export const HeroSection: FC<SectionProps> = ({ onRegister }) => {
             <span className={styles.accent}>{t.heading_accent}</span>
           </h1>
           <p className={styles.subtitle}>{t.subtitle}</p>
-          <Button label={t.button} />
+          <Button onClick={() => openModal('form', {})} label={t.button} />
         </div>
 
         <div className={styles.imageWrapper}>

@@ -5,6 +5,7 @@ import { AppRoute } from '@common/constants';
 import { HomePage } from '@pages/Home';
 
 import '@styles/global.scss';
+import { ModalProvider } from '@features/ModalProvider';
 
 const router = createBrowserRouter([
   {
@@ -14,5 +15,7 @@ const router = createBrowserRouter([
 ]);
 
 createRoot(document.getElementById('root')!).render(
-  <RouterProvider router={router} />
+  <ModalProvider>
+    <RouterProvider router={router} />
+  </ModalProvider>
 );
