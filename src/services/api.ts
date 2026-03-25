@@ -1,5 +1,6 @@
 import type { Lang } from '@common/types';
 import { TasksResponseSchema } from '@common/schemas/tasks';
+import { BenefitsResponseSchema } from '@common/schemas/benefits';
 
 const BASE_URL = import.meta.env.VITE_BASE_URL;
 const API_KEY = import.meta.env.VITE_API_KEY;
@@ -31,5 +32,10 @@ export const api = {
   getTasks: async () => {
     const data = await request('tasks');
     return TasksResponseSchema.parse(data);
+  },
+
+  getBenefits: async () => {
+    const data = await request('benefits');
+    return BenefitsResponseSchema.parse(data);
   }
 };
