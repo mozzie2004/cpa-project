@@ -9,3 +9,5 @@ export const TasksResponseSchema = z.object({
     })
   )
 });
+
+export type TasksResponse = z.infer<typeof TasksResponseSchema>;

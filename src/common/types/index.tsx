@@ -14,14 +14,6 @@ export type MultiplyResponse = {
   };
 }[];
 
-export type TasksResponse = {
-  description: string;
-  tiles: {
-    title: string;
-    text: string;
-  }[];
-};
-
 export interface SectionRef {
   playIn: (direction: number) => Promise<void>;
   playOut: (direction: number) => Promise<void>;
