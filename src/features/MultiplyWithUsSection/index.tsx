@@ -9,7 +9,7 @@ import Tab from './Tab';
 import clsx from 'clsx';
 import ArrowIcon from '@assets/icons/arrow.svg?react';
 import Button from '@components/Button/Button';
-import { useModal } from '@features/ModalProvider';
+import { useModal } from '@hooks/useModal';
 
 export const MultiplyWithUs: FC<SectionProps> = ({ onRegister }) => {
   const { openModal } = useModal();

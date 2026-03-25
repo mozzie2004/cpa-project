@@ -6,7 +6,7 @@ import heroData from '@data/hero.json';
 import type { SectionProps } from '@common/types';
 import snakeImg from '@assets/images/snake.webp';
 import styles from './HeroSection.module.scss';
-import { useModal } from '@features/ModalProvider';
+import { useModal } from '@hooks/useModal';
 
 const lang = 'en';
 

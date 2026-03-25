@@ -1,15 +1,11 @@
 import Input from '@components/Input';
-import { useState, type FC, type SubmitEventHandler } from 'react';
+import { useState, type SubmitEventHandler } from 'react';
 import styles from './Form.module.scss';
 import { Dropdown, type DropdownValue } from '@components/Dropdown';
 import ModalButton from '@components/ModalButton';
-import { useModal } from '@features/ModalProvider';
+import { useModal } from '@hooks/useModal';
 
-interface FormProps {
-  onClose: () => void;
-}
-
-const Form: FC<FormProps> = () => {
+const Form = () => {
   const { openModal } = useModal();
   const [name, setName] = useState('');
   const [yourContact, setYourContact] = useState('');
@@ -35,7 +31,7 @@ const Form: FC<FormProps> = () => {
           className={styles.form__firstInput}
           value={name}
           setValue={setName}
-          placeholder="First Name"
+          placeholder="Your Name"
         />
         <Dropdown
           value={contactMethod}
@@ -43,7 +39,7 @@ const Form: FC<FormProps> = () => {
           placeholder="Contact Method"
           options={[
             { id: 'telegram', label: 'Telegram' },
-            { id: 'instagram', label: 'Instagram' },
+            { id: 'email', label: 'Email' },
             { id: 'linkedin', label: 'Linkedin' }
           ]}
           required

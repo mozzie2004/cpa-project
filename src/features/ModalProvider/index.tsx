@@ -1,12 +1,4 @@
-import {
-  createContext,
-  useContext,
-  useState,
-  useRef,
-  useEffect,
-  type ReactNode,
-  type FC
-} from 'react';
+import { useState, useRef, useEffect, type ReactNode, type FC } from 'react';
 import { createPortal } from 'react-dom';
 import { gsap } from 'gsap';
 import Form from '@components/Form';
@@ -14,30 +6,12 @@ import styles from './ModalProvider.module.scss';
 import CloseIcon from '@assets/icons/close-icon.svg?react';
 import LogoIcon from '@assets/icons/logo.svg?react';
 import SuccessMessage from '@components/SuccessMessage';
-
-type ModalKey = 'form' | 'success';
-
-type ModalRegistry = {
-  form: Record<string, unknown>;
-  success: Record<string, unknown>;
-};
+import type { ModalKey, ModalRegistry } from './types';
+import { ModalContext } from './ModalContext';
 
 type ModalState<K extends ModalKey = ModalKey> = {
   key: K;
   props: ModalRegistry[K];
-};
-
-type ModalContextType = {
-  openModal: <K extends ModalKey>(key: K, props: ModalRegistry[K]) => void;
-  closeModal: () => void;
-};
-
-const ModalContext = createContext<ModalContextType | null>(null);
-
-export const useModal = () => {
-  const ctx = useContext(ModalContext);
-  if (!ctx) throw new Error('useModal must be used within ModalProvider');
-  return ctx;
 };
 
 const modalComponents: {
