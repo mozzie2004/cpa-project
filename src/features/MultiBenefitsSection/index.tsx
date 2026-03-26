@@ -1,4 +1,4 @@
-import { useEffect, useRef, type FC } from 'react';
+import { useEffect, useRef, useState, type FC } from 'react';
 import styles from './MultiBenefitsSection.module.scss';
 import type { SectionProps } from '@common/types';
 import SectionTitle from '@components/SectionTitle';
@@ -7,6 +7,8 @@ import gsap from 'gsap';
 import snakeImg from '@assets/images/snake-benefits.webp';
 import Marquee from './Marquee';
 import { highlightText } from '@common/utils/highlightText';
+import { api } from '@services/api';
+import type { BenefitsResponse } from '@common/schemas/benefits';
 
 const MultiBenefitsSection: FC<SectionProps> = ({ onRegister }) => {
   const rootRef = useRef<HTMLElement>(null);
@@ -14,6 +16,11 @@ const MultiBenefitsSection: FC<SectionProps> = ({ onRegister }) => {
   const leftContentRef = useRef<HTMLDivElement>(null);
   const rightContentRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLDivElement>(null);
+  const [data, setData] = useState<BenefitsResponse | null>(null);
+
+  useEffect(() => {
+    api.getBenefits().then(setData).catch(console.error);
+  }, []);
 
   useEffect(() => {
     onRegister({
@@ -82,30 +89,27 @@ const MultiBenefitsSection: FC<SectionProps> = ({ onRegister }) => {
         <SectionTitle>MULTI-BENEFITS</SectionTitle>
         <div className={styles.benefits__content}>
           <div ref={leftContentRef} className={styles.benefits__left}>
-            <p className={styles.benefits__subtitle}>
-              {highlightText(
-                'Results can only be guaranteed when you control every step',
-                'guaranteed',
-                styles.benefits__highlight
-              )}
-            </p>
-            <p className={styles.benefits__description}>
-              That’s why we built a full-time in-house team and custom
-              infrastructure – tailored for every task, tested daily in the
-              sweepstakes vertical
-            </p>
+            {data && (
+              <>
+                <p className={styles.benefits__subtitle}>
+                  {highlightText(
+                    data.title,
+                    'guaranteed',
+                    styles.benefits__highlight
+                  )}
+                </p>
+                <p className={styles.benefits__description}>
+                  {data.description}
+                </p>
+              </>
+            )}
           </div>
           <div ref={rightContentRef} className={styles.benefits__items}>
-            <div className={styles.benefits__item}>
-              We take on outsourced projects across any niche — from iGaming and
-              dating to e-commerce and recruitment
-            </div>
-            <div className={styles.benefits__item}>
-              We deliver what has already proven effective — many times over
-            </div>
-            <div className={styles.benefits__item}>
-              We don’t learn at the client’s expense
-            </div>
+            {data?.benefits.map((text) => (
+              <div key={text} className={styles.benefits__item}>
+                {text}
+              </div>
+            ))}
             <div ref={imageRef} className={styles.benefits__image}>
               <img src={snakeImg} alt="snake" />
             </div>
