@@ -1,18 +1,14 @@
 import type { FC } from 'react';
-import styles from './SuccessMessage.module.scss';
+import styles from './ModalInfo.module.scss';
 import ModalButton from '@components/ModalButton';
 
-interface SuccessMessageProps {
+interface ModalInfoProps {
   onClose: () => void;
   title?: string;
   message?: string;
 }
 
-const SuccessMessage: FC<SuccessMessageProps> = ({
-  title,
-  message,
-  onClose
-}) => {
+const ModalInfo: FC<ModalInfoProps> = ({ title, message, onClose }) => {
   return (
     <div className={styles.message}>
       <p className={styles.message__title}>{title}</p>
@@ -27,4 +23,4 @@ const SuccessMessage: FC<SuccessMessageProps> = ({
   );
 };
 
-export default SuccessMessage;
+export default ModalInfo;

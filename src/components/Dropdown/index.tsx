@@ -15,6 +15,7 @@ interface DropdownProps {
   setValue: (value?: DropdownValue | null) => void;
   placeholder: string;
   required?: boolean;
+  errorMessage?: string;
 }
 
 export const Dropdown: FC<DropdownProps> = ({
@@ -22,7 +23,8 @@ export const Dropdown: FC<DropdownProps> = ({
   value,
   setValue,
   placeholder,
-  required
+  required,
+  errorMessage
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -66,41 +68,44 @@ export const Dropdown: FC<DropdownProps> = ({
   };
 
   return (
-    <div
-      ref={dropdownRef}
-      className={clsx(styles.dropdown, isOpen && styles.dropdown_open)}
-    >
+    <div>
       <div
-        className={clsx(
-          styles.dropdown__head,
-          isOpen && styles.dropdown__head_open
-        )}
-        onClick={() => setIsOpen((state) => !state)}
+        ref={dropdownRef}
+        className={clsx(styles.dropdown, isOpen && styles.dropdown_open)}
       >
-        <span>
-          {value?.label || (
-            <>
-              {placeholder}
-              {required && <span className={styles.dropdown__star}>*</span>}
-            </>
+        <div
+          className={clsx(
+            styles.dropdown__head,
+            isOpen && styles.dropdown__head_open
           )}
-        </span>
-        <AngleIcon />
-      </div>
-
-      {isOpen && (
-        <div className={styles.dropdown__options} ref={optionsRef}>
-          {options.map((item) => (
-            <div
-              className={styles.dropdown__option}
-              onClick={() => handleSelect(item)}
-              key={item.id}
-            >
-              {item.label}
-            </div>
-          ))}
+          onClick={() => setIsOpen((state) => !state)}
+        >
+          <span>
+            {value?.label || (
+              <>
+                {placeholder}
+                {required && <span className={styles.dropdown__star}>*</span>}
+              </>
+            )}
+          </span>
+          <AngleIcon />
         </div>
-      )}
+
+        {isOpen && (
+          <div className={styles.dropdown__options} ref={optionsRef}>
+            {options.map((item) => (
+              <div
+                className={styles.dropdown__option}
+                onClick={() => handleSelect(item)}
+                key={item.id}
+              >
+                {item.label}
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+      {errorMessage && <span className={styles.error}>{errorMessage}</span>}
     </div>
   );
 };

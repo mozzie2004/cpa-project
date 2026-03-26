@@ -9,3 +9,14 @@ export interface SectionRef {
 export interface SectionProps {
   onRegister: (ref: SectionRef) => void;
 }
+
+export type FormPayload = {
+  name?: string;
+  method: 'telegram' | 'whatsapp' | 'email';
+  contact: string;
+};
+
+export type FormResponse = {
+  message: string;
+  data?: FormPayload;
+};
