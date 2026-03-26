@@ -77,7 +77,6 @@ const Form = () => {
       const schema = formSchema.shape[name];
       const validatingValue = name === 'method' ? value?.id : value;
       const validatingResults = schema.safeParse(validatingValue);
-      console.log(formErrors);
 
       setFormErrors((state) => ({
         ...state,
