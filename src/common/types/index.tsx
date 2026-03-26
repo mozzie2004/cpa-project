@@ -22,6 +22,17 @@ export type TasksResponse = {
   }[];
 };
 
+export type FormPayload = {
+  name?: string;
+  method: 'telegram' | 'whatsapp' | 'email';
+  contact: string;
+};
+
+export type FormResponse = {
+  message: string;
+  data?: FormPayload;
+};
+
 export interface SectionRef {
   playIn: (direction: number) => Promise<void>;
   playOut: (direction: number) => Promise<void>;

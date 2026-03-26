@@ -1,8 +1,8 @@
-export type ModalKey = 'form' | 'success';
+export type ModalKey = 'form' | 'info';
 
 export type ModalRegistry = {
   form: Record<string, unknown>;
-  success: Record<string, unknown>;
+  info: Record<string, unknown>;
 };
 
 export type ModalContextType = {

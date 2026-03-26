@@ -5,9 +5,9 @@ import Form from '@components/Form';
 import styles from './ModalProvider.module.scss';
 import CloseIcon from '@assets/icons/close-icon.svg?react';
 import LogoIcon from '@assets/icons/logo.svg?react';
-import SuccessMessage from '@components/SuccessMessage';
 import type { ModalKey, ModalRegistry } from './types';
 import { ModalContext } from './ModalContext';
+import ModalInfo from '@components/ModalInfo';
 
 type ModalState<K extends ModalKey = ModalKey> = {
   key: K;
@@ -18,7 +18,7 @@ const modalComponents: {
   [K in ModalKey]: FC<ModalRegistry[K] & { onClose: () => void }>;
 } = {
   form: Form,
-  success: SuccessMessage
+  info: ModalInfo
 };
 
 export const ModalProvider: FC<{ children: ReactNode }> = ({ children }) => {
