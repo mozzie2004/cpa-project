@@ -67,3 +67,21 @@ describe('setApiLang', () => {
     );
   });
 });
+
+describe('HTTP error responses', () => {
+  it('throws on non-ok GET response', async () => {
+    globalThis.fetch = mockFetch(null, false, 500);
+
+    await expect(api.getTasks()).rejects.toThrow('API error: 500');
+  });
+
+  it('throws on non-ok POST response', async () => {
+    globalThis.fetch = mockFetch(null, false, 400);
+
+    const payload = {
+      method: 'email' as const,
+      contact: 'test@test.com'
+    };
+    await expect(api.postForm(payload)).rejects.toThrow('API error: 400');
+  });
+});
