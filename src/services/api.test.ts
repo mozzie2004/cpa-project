@@ -33,6 +33,33 @@ afterEach(() => {
   vi.unstubAllEnvs();
 });
 
+describe('api.postForm', () => {
+  it('sends POST request with form data and returns response', async () => {
+    const formPayload = {
+      name: 'John',
+      method: 'telegram' as const,
+      contact: '@john'
+    };
+    const mockResponse = {
+      message: 'Success',
+      data: formPayload
+    };
+    globalThis.fetch = mockFetch(mockResponse);
+
+    const result = await api.postForm(formPayload);
+
+    expect(globalThis.fetch).toHaveBeenCalledWith(`${BASE_URL}/en/form`, {
+      headers: expect.objectContaining({
+        'x-api-key': API_KEY,
+        'Content-Type': 'application/json'
+      }),
+      method: 'POST',
+      body: JSON.stringify(formPayload)
+    });
+    expect(result).toEqual(mockResponse);
+  });
+});
+
 describe('setApiLang', () => {
   it('switches language used in request URLs', async () => {
     const mockData = {
