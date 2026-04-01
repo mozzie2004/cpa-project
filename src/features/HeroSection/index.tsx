@@ -1,4 +1,4 @@
-import { useEffect, useRef, type FC } from 'react';
+import { useEffect, useRef, useState, type FC } from 'react';
 import gsap from 'gsap';
 import Button from '@components/Button/Button';
 import SocialLinks from '@components/SocialLinks/SocialLinks';
@@ -16,6 +16,40 @@ export const HeroSection: FC<SectionProps> = ({ onRegister }) => {
 
   const rootRef = useRef<HTMLElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
+  const accentRef = useRef<HTMLSpanElement>(null);
+
+  const words = t.heading_accents;
+  const [wordIndex, setWordIndex] = useState(0);
+
+  useEffect(() => {
+    if (!accentRef.current) return;
+
+    const tl = gsap.timeline({ repeat: -1 });
+
+    words.forEach((_, i) => {
+      tl.fromTo(
+        accentRef.current,
+        { opacity: 0, y: 20 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.1,
+          ease: 'power2.out',
+          onStart: () => setWordIndex(i)
+        }
+      ).to(accentRef.current, {
+        opacity: 0,
+        y: -20,
+        duration: 0.1,
+        ease: 'power2.in',
+        delay: 1
+      });
+    });
+
+    return () => {
+      tl.kill();
+    };
+  }, [words]);
 
   useEffect(() => {
     onRegister({
@@ -45,7 +79,9 @@ export const HeroSection: FC<SectionProps> = ({ onRegister }) => {
             {t.heading_1}
             <br />
             {t.heading_2}{' '}
-            <span className={styles.accent}>{t.heading_accent}</span>
+            <span ref={accentRef} className={styles.accent}>
+              {words[wordIndex]}
+            </span>
           </h1>
           <p className={styles.subtitle}>{t.subtitle}</p>
           <Button onClick={() => openModal('form', {})} label={t.button} />
