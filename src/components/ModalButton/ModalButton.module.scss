@@ -1,0 +1,19 @@
+.button {
+  display: block;
+  padding: 10px 40px 11px;
+  border-radius: 8px;
+  background-color: $color-yellow;
+  cursor: pointer;
+  font-family: $font-heading;
+  font-size: 14px;
+  line-height: 1;
+  font-weight: 500;
+  color: $color-black;
+  transition:
+    color 0.2s,
+    background-color 0.2s;
+  &:hover {
+    color: $color-white;
+    background-color: $color-background;
+  }
+}

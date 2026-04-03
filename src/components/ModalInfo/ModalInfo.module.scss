@@ -1,0 +1,27 @@
+.message {
+  margin-top: 40px;
+  &__title {
+    font-family: $font-heading;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 1;
+    color: $color-black;
+  }
+  &__subtitle {
+    font-family: $font-body;
+    margin: 0 auto;
+    margin-top: 20px;
+    font-weight: 300;
+    text-align: center;
+    font-size: 20px;
+    line-height: 1;
+    color: $color-black;
+    max-width: 320px;
+  }
+  &__btn {
+    margin: 0 auto;
+    margin-top: 40px;
+  }
+}

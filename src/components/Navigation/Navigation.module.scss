@@ -1,0 +1,164 @@
+.nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .rightGroup {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-family: $font-heading;
+    font-size: 20px;
+    font-weight: 700;
+    text-transform: uppercase;
+
+    @include tablet {
+      display: none;
+    }
+  }
+  padding: 30px 50px 0;
+  z-index: 10;
+
+  @include tablet {
+    padding: 10px 5px 0 16px;
+  }
+}
+
+.logo svg {
+  display: block;
+  width: 45px;
+  height: auto;
+
+  @include tablet {
+    width: 26px;
+  }
+}
+
+.links {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+}
+
+.link {
+  display: block;
+  line-height: 1;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  color: $color-yellow;
+  padding: 10px;
+
+  &:hover {
+    color: $color-white;
+  }
+}
+
+.langSwitcher,
+.overlayLangSwitcher {
+  display: flex;
+  align-items: center;
+  color: $color-yellow;
+}
+
+.langBtn,
+.overlayLangBtn {
+  font: inherit;
+  text-transform: inherit;
+  color: $color-white;
+}
+
+.langBtnActive,
+.overlayLangBtnActive {
+  font: inherit;
+  text-transform: inherit;
+  color: $color-yellow;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 2px;
+  text-decoration: underline;
+}
+
+.menuBtn {
+  display: none;
+  font-family: $font-heading;
+  font-size: 20px;
+  font-weight: 700;
+  text-transform: uppercase;
+  line-height: 1;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  color: $color-yellow;
+  padding: 10px;
+
+  @include tablet {
+    display: block;
+  }
+}
+
+.overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background:
+    linear-gradient(121.08deg, #9500dc -3.37%, #560080 56.37%, #220032 102.54%),
+    linear-gradient(0deg, #560080, #560080);
+  z-index: 20;
+  font-family: $font-heading;
+  font-size: 32px;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 2px;
+  color: $color-yellow;
+
+  @include tablet {
+    display: block;
+  }
+}
+
+.logoMobile svg {
+  display: block;
+  width: 44px;
+  height: auto;
+}
+
+.overlayHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px 16px;
+}
+
+.closeBtn svg {
+  display: block;
+  width: 20px;
+  height: auto;
+}
+
+.overlayLinks {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  list-style: none;
+  margin-top: 80px;
+}
+
+.overlayLink {
+  display: block;
+  text-decoration: underline;
+  padding: 10px;
+}
+
+.socialIcons {
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.overlayLangSwitcher {
+  justify-content: center;
+  margin-top: 63px;
+}
