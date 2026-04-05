@@ -1,0 +1,28 @@
+.bg {
+  position: fixed;
+  width: 100vw;
+  height: 100dvh;
+  top: 0;
+  left: 0;
+  background: url('@assets/images/bg-grid.webp') no-repeat center center / cover;
+  pointer-events: none;
+
+  --spot-cx: 10%;
+  --spot-cy: 10%;
+
+  $spot: radial-gradient(
+    circle 400px at var(--spot-cx) var(--spot-cy),
+    rgb(255 255 255 / 1) 0%,
+    rgb(255 255 255 / 0.35) 48%,
+    rgb(255 255 255 / 0) 72%
+  );
+
+  -webkit-mask-image: $spot;
+  mask-image: $spot;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  -webkit-mask-position: 0 0;
+  mask-position: 0 0;
+}

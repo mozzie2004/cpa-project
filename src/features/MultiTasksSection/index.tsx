@@ -39,7 +39,7 @@ const MultiTasksSection: FC<SectionProps> = ({ onRegister }) => {
 
   return (
     <section id="tasks" ref={rootRef} className={styles.section}>
-      <div ref={contentRef}>
+      <div className={styles.wrapper} ref={contentRef}>
         <SectionTitle>Multi-Tasks</SectionTitle>
 
         <div className={styles.layout}>
