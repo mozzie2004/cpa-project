@@ -33,19 +33,23 @@ export const ScrollSystem: FC<ScrollSystemProps> = ({ sections }) => {
         if (currentSection && nextSection && nextSection.element) {
           isAnimating.current = true;
 
-          await currentSection.playOut(direction);
+          try {
+            await currentSection.playOut(direction);
 
-          await gsap.to(window, {
-            scrollTo: { y: nextSection.element, autoKill: false },
-            duration: 0
-          });
+            await gsap.to(window, {
+              scrollTo: { y: nextSection.element, autoKill: false },
+              duration: 0
+            });
 
-          currentIndex.current = index;
-          window.history.pushState(
-            null,
-            '',
-            `#${nextSection.element.id || index}`
-          );
+            currentIndex.current = index;
+            window.history.pushState(
+              null,
+              '',
+              `#${nextSection.element.id || index}`
+            );
+          } finally {
+            isAnimating.current = false;
+          }
         }
       };
 
@@ -64,16 +68,12 @@ export const ScrollSystem: FC<ScrollSystemProps> = ({ sections }) => {
           start: 'top bottom',
           onEnter: async (self) => {
             if (section?.element) {
-              isAnimating.current = true;
               await section?.playIn(self.direction);
-              isAnimating.current = false;
             }
           },
           onEnterBack: async (self) => {
             if (section?.element) {
-              isAnimating.current = true;
               await section?.playIn(self.direction);
-              isAnimating.current = false;
             }
           }
         });
