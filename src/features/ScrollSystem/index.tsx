@@ -3,10 +3,9 @@ import { gsap } from 'gsap';
 import { Observer } from 'gsap/all';
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 import type { SectionProps, SectionRef } from '@common/types';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useLocation } from 'react-router';
 
-gsap.registerPlugin(Observer, ScrollToPlugin, ScrollTrigger);
+gsap.registerPlugin(Observer, ScrollToPlugin);
 
 interface ScrollSystemProps {
   sections: FC<SectionProps>[];
@@ -41,6 +40,8 @@ export const ScrollSystem: FC<ScrollSystemProps> = ({ sections }) => {
               duration: 0
             });
 
+            await nextSection.playIn(direction);
+
             currentIndex.current = index;
             window.history.pushState(
               null,
@@ -61,27 +62,20 @@ export const ScrollSystem: FC<ScrollSystemProps> = ({ sections }) => {
         tolerance: 40,
         preventDefault: true
       });
-
-      sectionRefs.current.forEach((section) => {
-        ScrollTrigger.create({
-          trigger: section?.element,
-          start: 'top bottom',
-          onEnter: async (self) => {
-            if (section?.element) {
-              await section?.playIn(self.direction);
-            }
-          },
-          onEnterBack: async (self) => {
-            if (section?.element) {
-              await section?.playIn(self.direction);
-            }
-          }
-        });
-      });
     });
 
     return () => mm.revert();
   }, [sections.length]);
+
+  useEffect(() => {
+    if (!window.matchMedia('(min-width: 768px)').matches) return;
+    if (window.location.hash) return;
+
+    const firstSection = sectionRefs.current[0];
+    if (firstSection?.element) {
+      firstSection.playIn(1);
+    }
+  }, []);
 
   useEffect(() => {
     if (hash) {
@@ -91,7 +85,18 @@ export const ScrollSystem: FC<ScrollSystemProps> = ({ sections }) => {
         const targetIdx = sectionRefs.current.findIndex(
           (item) => item?.element === target
         );
-        if (targetIdx !== -1) currentIndex.current = targetIdx;
+        if (targetIdx !== -1) {
+          currentIndex.current = targetIdx;
+
+          const section = sectionRefs.current[targetIdx];
+          if (section?.element && window.matchMedia('(min-width: 768px)').matches) {
+            gsap.to(window, {
+              scrollTo: { y: section.element, autoKill: false },
+              duration: 0
+            });
+            section.playIn(1);
+          }
+        }
       }
     }
   }, [hash]);
