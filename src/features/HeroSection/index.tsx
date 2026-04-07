@@ -7,12 +7,12 @@ import type { SectionProps } from '@common/types';
 import snakeImg from '@assets/images/snake.webp';
 import styles from './HeroSection.module.scss';
 import { useModal } from '@hooks/useModal';
-
-const lang = 'en';
+import { useLocale } from '@hooks/useLocale';
 
 export const HeroSection: FC<SectionProps> = ({ onRegister }) => {
+  const { locale } = useLocale();
   const { openModal } = useModal();
-  const t = heroData[lang];
+  const t = heroData[locale];
 
   const rootRef = useRef<HTMLElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
