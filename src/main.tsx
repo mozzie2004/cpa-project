@@ -11,7 +11,13 @@ import NotFoundPage from '@pages/NotFound';
 const router = createBrowserRouter([
   {
     path: AppRoute.ROOT,
-    element: <HomePage />
+    children: [
+      {
+        index: true,
+        element: <HomePage />
+      },
+      { path: ':locale', element: <HomePage /> }
+    ]
   },
   {
     path: AppRoute.ANY,

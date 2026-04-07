@@ -1,0 +1,20 @@
+{
+  "en": {
+    "btns": {
+      "for_media_buyers": "JOIN THE TEAM",
+      "for_businesses": "Launch Now",
+      "for_partners": "partner up",
+      "default": "partner up"
+    },
+    "scrollToTop": "Scroll to Top"
+  },
+  "ru": {
+    "btns": {
+      "Медиабайерам": "В команду",
+      "Бизнесам": "Запустить проект",
+      "Партнёрам": "Стать партнёром",
+      "default": "Запустить проект"
+    },
+    "scrollToTop": "наверх"
+  }
+}

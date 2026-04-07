@@ -4,9 +4,22 @@ import MultiTasksSection from '@features/MultiTasksSection';
 import MultiBenefitsSection from '@features/MultiBenefitsSection';
 import { ScrollSystem } from '@features/ScrollSystem';
 import { MultiplyWithUs } from '@features/MultiplyWithUsSection';
+import { Navigate, useParams } from 'react-router';
+import { LOCALES, DEFAULT_LOCALE } from '@common/constants';
+import type { Lang } from '@common/types';
 import SectionBg from '@components/SectionBg';
 
 export const HomePage = () => {
+  const { locale } = useParams();
+
+  if (locale === DEFAULT_LOCALE) {
+    return <Navigate to={'/'} />;
+  }
+
+  if (locale && !LOCALES.includes(locale as Lang)) {
+    return <Navigate to={'/en/not-found'} />;
+  }
+
   return (
     <>
       <Navigation />

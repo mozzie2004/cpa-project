@@ -4,13 +4,21 @@ import CloseIcon from '@assets/icons/close-icon.svg?react';
 import SocialLinks from '@components/SocialLinks/SocialLinks';
 import heroData from '@data/hero.json';
 import styles from './Navigation.module.scss';
+import { useLocale } from '@hooks/useLocale';
+import clsx from 'clsx';
+import type { Lang } from '@common/types';
 
 const navHrefs = ['#team', '#benefits', '#withUs'];
-const lang = 'en';
 
 const Navigation = () => {
+  const { locale, setLocale } = useLocale();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const t = heroData[lang];
+  const t = heroData[locale];
+
+  const handleChangeLocale = (locale: Lang) => {
+    setLocale(locale);
+    setIsMenuOpen(false);
+  };
 
   return (
     <>
@@ -29,11 +37,25 @@ const Navigation = () => {
             ))}
           </ul>
           <div className={styles.langSwitcher}>
-            <button className={styles.langBtn} type="button">
+            <button
+              onClick={() => setLocale('en')}
+              className={clsx(
+                styles.langBtn,
+                locale === 'en' && styles.langBtnActive
+              )}
+              type="button"
+            >
               Eng
             </button>
             /
-            <button className={styles.langBtnActive} type="button">
+            <button
+              onClick={() => setLocale('ru')}
+              className={clsx(
+                styles.langBtn,
+                locale === 'ru' && styles.langBtnActive
+              )}
+              type="button"
+            >
               Рус
             </button>
           </div>
@@ -88,11 +110,25 @@ const Navigation = () => {
           <SocialLinks className={styles.socialIcons} />
 
           <div className={styles.overlayLangSwitcher}>
-            <button className={styles.overlayLangBtn} type="button">
+            <button
+              className={clsx(
+                styles.overlayLangBtn,
+                locale === 'en' && styles.overlayLangBtnActive
+              )}
+              type="button"
+              onClick={() => handleChangeLocale('en')}
+            >
               Eng
             </button>
             /
-            <button className={styles.overlayLangBtnActive} type="button">
+            <button
+              className={clsx(
+                styles.overlayLangBtn,
+                locale === 'ru' && styles.overlayLangBtnActive
+              )}
+              type="button"
+              onClick={() => handleChangeLocale('ru')}
+            >
               Рус
             </button>
           </div>
