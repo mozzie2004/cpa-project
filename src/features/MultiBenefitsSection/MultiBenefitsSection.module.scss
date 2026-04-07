@@ -87,7 +87,8 @@
 
   @include tablet {
     padding: 80px 0 60px;
-    background: #560080;
+    background: url('@assets/images/bg-mobile.webp') no-repeat center center /
+      cover;
     height: auto;
     &__content {
       padding: 0 16px;

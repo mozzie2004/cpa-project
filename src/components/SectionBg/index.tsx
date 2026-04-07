@@ -33,6 +33,8 @@ const SectionBg = () => {
     };
 
     apply();
+    const isDesktop = window.matchMedia('(min-width: 768px)').matches;
+    if (!isDesktop) return;
 
     const tl = gsap.timeline({ repeat: -1 });
 
