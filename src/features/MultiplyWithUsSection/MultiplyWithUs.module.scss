@@ -9,6 +9,8 @@
   );
   overflow: hidden;
   &__wrapper {
+    position: relative;
+    z-index: 1;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -120,7 +122,8 @@
   @include tablet {
     padding: 90px 16px 70px;
     height: auto;
-    background: #560080;
+    background: url('@assets/images/bg-mobile.webp') no-repeat center center /
+      cover;
     position: relative;
     h2 {
       display: block;

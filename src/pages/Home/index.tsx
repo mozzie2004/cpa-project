@@ -7,6 +7,7 @@ import { MultiplyWithUs } from '@features/MultiplyWithUsSection';
 import { Navigate, useParams } from 'react-router';
 import { LOCALES, DEFAULT_LOCALE } from '@common/constants';
 import type { Lang } from '@common/types';
+import SectionBg from '@components/SectionBg';
 
 export const HomePage = () => {
   const { locale } = useParams();
@@ -30,6 +31,7 @@ export const HomePage = () => {
           MultiplyWithUs
         ]}
       />
+      <SectionBg />
     </>
   );
 };

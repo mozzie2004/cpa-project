@@ -1,6 +1,15 @@
 @use './utils/fonts';
 @use './utils/reset';
 
+html,
+body {
+  overflow: hidden;
+
+  @include tablet {
+    overflow: auto;
+  }
+}
+
 body {
   font-family: $font-body;
   &::-webkit-scrollbar {
