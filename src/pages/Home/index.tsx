@@ -4,6 +4,7 @@ import MultiTasksSection from '@features/MultiTasksSection';
 import MultiBenefitsSection from '@features/MultiBenefitsSection';
 import { ScrollSystem } from '@features/ScrollSystem';
 import { MultiplyWithUs } from '@features/MultiplyWithUsSection';
+import SectionBg from '@components/SectionBg';
 
 export const HomePage = () => {
   return (
@@ -17,6 +18,7 @@ export const HomePage = () => {
           MultiplyWithUs
         ]}
       />
+      <SectionBg />
     </>
   );
 };

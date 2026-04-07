@@ -73,7 +73,7 @@ export const HeroSection: FC<SectionProps> = ({ onRegister }) => {
 
   return (
     <section id="hero" ref={rootRef} className={styles.hero}>
-      <div ref={contentRef}>
+      <div className={styles.wrapper} ref={contentRef}>
         <div className={styles.content}>
           <h1 className={styles.heading}>
             {t.heading_1}
