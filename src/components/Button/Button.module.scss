@@ -75,3 +75,17 @@
     }
   }
 }
+
+.tabletLabel {
+  display: none;
+
+  @include tablet {
+    display: block;
+  }
+}
+
+.hiddenTablet {
+  @include tablet {
+    display: none;
+  }
+}
