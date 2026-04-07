@@ -14,21 +14,20 @@
   @include tablet {
     padding-left: 16px;
     padding-top: 150px;
-    background:
-      linear-gradient(
-        121.08deg,
-        #9500dc -3.37%,
-        #560080 56.37%,
-        #220032 102.54%
-      ),
-      linear-gradient(0deg, #560080, #560080);
+    background: url('@assets/images/bg-mobile.webp') no-repeat center center /
+      cover;
   }
+}
+
+.wrapper {
+  position: relative;
+  z-index: 1;
 }
 
 .content {
   position: relative;
   z-index: 2;
-  max-width: 750px;
+  max-width: 760px;
 }
 
 .heading {
@@ -46,6 +45,7 @@
 }
 
 .accent {
+  display: inline-block;
   color: $color-yellow;
 }
 

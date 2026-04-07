@@ -7,10 +7,12 @@ import gsap from 'gsap';
 import snakeImg from '@assets/images/snake-benefits.webp';
 import Marquee from './Marquee';
 import { highlightText } from '@common/utils/highlightText';
-import { api } from '@services/api';
+import { api, setApiLang } from '@services/api';
 import type { BenefitsResponse } from '@common/schemas/benefits';
+import { useLocale } from '@hooks/useLocale';
 
 const MultiBenefitsSection: FC<SectionProps> = ({ onRegister }) => {
+  const { locale } = useLocale();
   const rootRef = useRef<HTMLElement>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
   const leftContentRef = useRef<HTMLDivElement>(null);
@@ -19,8 +21,9 @@ const MultiBenefitsSection: FC<SectionProps> = ({ onRegister }) => {
   const [data, setData] = useState<BenefitsResponse | null>(null);
 
   useEffect(() => {
+    setApiLang(locale);
     api.getBenefits().then(setData).catch(console.error);
-  }, []);
+  }, [locale]);
 
   useEffect(() => {
     onRegister({

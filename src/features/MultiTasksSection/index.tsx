@@ -1,21 +1,24 @@
 import { useEffect, useRef, useState, type FC } from 'react';
 import gsap from 'gsap';
 import SectionTitle from '@components/SectionTitle';
-import { api } from '@services/api';
+import { api, setApiLang } from '@services/api';
 import type { SectionProps } from '@common/types';
 import type { TasksResponse } from '@common/schemas/tasks';
 import snakeImg from '@assets/images/snake-tasks.webp';
 import { highlightText } from '@common/utils/highlightText';
 import styles from './MultiTasksSection.module.scss';
+import { useLocale } from '@hooks/useLocale';
 
 const MultiTasksSection: FC<SectionProps> = ({ onRegister }) => {
+  const { locale } = useLocale();
   const [data, setData] = useState<TasksResponse | null>(null);
   const rootRef = useRef<HTMLElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    setApiLang(locale);
     api.getTasks().then(setData).catch(console.error);
-  }, []);
+  }, [locale]);
 
   useEffect(() => {
     onRegister({
@@ -39,7 +42,7 @@ const MultiTasksSection: FC<SectionProps> = ({ onRegister }) => {
 
   return (
     <section id="tasks" ref={rootRef} className={styles.section}>
-      <div ref={contentRef}>
+      <div className={styles.wrapper} ref={contentRef}>
         <SectionTitle>Multi-Tasks</SectionTitle>
 
         <div className={styles.layout}>
