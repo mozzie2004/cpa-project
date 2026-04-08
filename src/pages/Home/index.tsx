@@ -1,4 +1,6 @@
+import { useState } from 'react';
 import Navigation from '@components/Navigation/Navigation';
+import Preloader from '@components/Preloader/Preloader';
 import { HeroSection } from '@features/HeroSection';
 import MultiTasksSection from '@features/MultiTasksSection';
 import MultiBenefitsSection from '@features/MultiBenefitsSection';
@@ -10,6 +12,7 @@ import type { Lang } from '@common/types';
 import SectionBg from '@components/SectionBg';
 
 export const HomePage = () => {
+  const [isLoading, setIsLoading] = useState(true);
   const { locale } = useParams();
 
   if (locale === DEFAULT_LOCALE) {
@@ -22,6 +25,7 @@ export const HomePage = () => {
 
   return (
     <>
+      {isLoading && <Preloader onComplete={() => setIsLoading(false)} />}
       <Navigation />
       <ScrollSystem
         sections={[
