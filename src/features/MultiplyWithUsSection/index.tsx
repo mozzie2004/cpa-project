@@ -22,6 +22,7 @@ export const MultiplyWithUs: FC<SectionProps> = ({ onRegister }) => {
   const rootRef = useRef<HTMLElement>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
+  const footerRef = useRef<HTMLDivElement>(null);
 
   const [activeTab, setActiveTab] = useState<number>(0);
 
@@ -54,6 +55,12 @@ export const MultiplyWithUs: FC<SectionProps> = ({ onRegister }) => {
             },
             { opacity: 1, duration: 0.8 },
             '<'
+          )
+          .fromTo(
+            footerRef.current,
+            { y: 50, opacity: 0 },
+            { y: 0, opacity: 1, duration: 0.6, ease: 'power2.out' },
+            '-=0.3'
           );
       },
       playOut: async (direction) => {
@@ -126,7 +133,7 @@ export const MultiplyWithUs: FC<SectionProps> = ({ onRegister }) => {
                     </div>
                   ))}
                 </div>
-                <div className={styles.multiply__footer}>
+                <div className={styles.multiply__footer} ref={footerRef}>
                   <div className={styles.multiply__footerLinks}>
                     <a
                       className={styles.multiply__footerLink}
