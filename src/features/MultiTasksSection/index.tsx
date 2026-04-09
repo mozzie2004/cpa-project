@@ -14,6 +14,9 @@ const MultiTasksSection: FC<SectionProps> = ({ onRegister }) => {
   const [data, setData] = useState<TasksResponse | null>(null);
   const rootRef = useRef<HTMLElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
+  const titleRef = useRef<HTMLDivElement>(null);
+  const leftRef = useRef<HTMLDivElement>(null);
+  const gridRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setApiLang(locale);
@@ -23,19 +26,60 @@ const MultiTasksSection: FC<SectionProps> = ({ onRegister }) => {
   useEffect(() => {
     onRegister({
       element: rootRef.current,
-      playIn: async (direction) => {
-        await gsap.fromTo(
-          contentRef.current,
-          { y: direction > 0 ? 50 : -50, opacity: 0 },
-          { y: 0, opacity: 1, duration: 0.8 }
-        );
+      playIn: async () => {
+        gsap.set(contentRef.current, { opacity: 1, y: 0 });
+
+        const cards = gridRef.current?.children;
+        if (!cards || cards.length === 0) return;
+
+        const firstTwo = [cards[0], cards[1]];
+        const lastThree = Array.from(cards).slice(2);
+
+        const tl = gsap.timeline();
+        tl.fromTo(
+          titleRef.current,
+          { y: -50, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.5, ease: 'power2.out' }
+        ).fromTo(
+          leftRef.current,
+          { x: -200, opacity: 0 },
+          { x: 0, opacity: 1, duration: 0.8, ease: 'power2.out' },
+          '<0.1'
+        )
+          .fromTo(
+            firstTwo,
+            { x: 200, opacity: 0 },
+            {
+              x: 0,
+              opacity: 1,
+              duration: 0.6,
+              ease: 'power2.out',
+              stagger: 0.1
+            },
+            '<0.2'
+          )
+          .fromTo(
+            lastThree,
+            { x: 200, opacity: 0 },
+            {
+              x: 0,
+              opacity: 1,
+              duration: 0.6,
+              ease: 'power2.out',
+              stagger: 0.1
+            },
+            '-=0.3'
+          );
+        await tl;
       },
       playOut: async (direction) => {
-        await gsap.to(contentRef.current, {
+        const tl = gsap.timeline();
+        tl.to(contentRef.current, {
           y: direction > 0 ? -50 : 50,
           opacity: 0,
           duration: 0.5
         });
+        await tl;
       }
     });
   }, [onRegister]);
@@ -43,10 +87,12 @@ const MultiTasksSection: FC<SectionProps> = ({ onRegister }) => {
   return (
     <section id="tasks" ref={rootRef} className={styles.section}>
       <div className={styles.wrapper} ref={contentRef}>
-        <SectionTitle>Multi-Tasks</SectionTitle>
+        <div ref={titleRef}>
+          <SectionTitle>Multi-Tasks</SectionTitle>
+        </div>
 
         <div className={styles.layout}>
-          <div className={styles.left}>
+          <div className={styles.left} ref={leftRef}>
             {data && (
               <p className={styles.description}>
                 {highlightText(
@@ -65,7 +111,7 @@ const MultiTasksSection: FC<SectionProps> = ({ onRegister }) => {
             </div>
           </div>
 
-          <div className={styles.grid}>
+          <div className={styles.grid} ref={gridRef}>
             {data?.tiles.map(({ title, text }) => (
               <div key={title} className={styles.card}>
                 <h3 className={styles.cardTitle}>{title}</h3>

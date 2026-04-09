@@ -56,6 +56,7 @@ export const HeroSection: FC<SectionProps> = ({ onRegister }) => {
     onRegister({
       element: rootRef.current,
       playIn: async () => {
+        gsap.killTweensOf([contentRef.current, socialRef.current]);
         const tl = gsap.timeline();
         tl.fromTo(
           contentRef.current,
