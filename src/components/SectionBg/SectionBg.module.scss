@@ -7,6 +7,10 @@
   background: url('@assets/images/bg-grid.webp') no-repeat center center / cover;
   pointer-events: none;
 
+  &.elevated {
+    z-index: 101;
+  }
+
   --spot-cx: 10%;
   --spot-cy: 10%;
 

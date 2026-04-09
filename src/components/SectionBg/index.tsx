@@ -1,5 +1,6 @@
 import { useLayoutEffect, useRef } from 'react';
 import gsap from 'gsap';
+import clsx from 'clsx';
 import styles from './SectionBg.module.scss';
 
 export const SPOTLIGHT_EDGE_DURATION = 4;
@@ -9,7 +10,11 @@ const SPOT_BOTTOM_RIGHT = { x: 90, y: 90 } as const;
 
 const SPOTLIGHT_PAUSE = 1.5;
 
-const SectionBg = () => {
+interface SectionBgProps {
+  elevated?: boolean;
+}
+
+const SectionBg = ({ elevated }: SectionBgProps) => {
   const rootRef = useRef<HTMLDivElement>(null);
 
   useLayoutEffect(() => {
@@ -64,7 +69,7 @@ const SectionBg = () => {
     };
   }, []);
 
-  return <div ref={rootRef} className={styles.bg}></div>;
+  return <div ref={rootRef} className={clsx(styles.bg, elevated && styles.elevated)}></div>;
 };
 
 export default SectionBg;
