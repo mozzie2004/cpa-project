@@ -35,7 +35,7 @@ export const HomePage = () => {
           MultiplyWithUs
         ]}
       />
-      <SectionBg />
+      <SectionBg elevated={isLoading} />
     </>
   );
 };

@@ -102,11 +102,22 @@
       align-items: center;
       text-underline-offset: 3px;
       text-decoration-thickness: 1px;
+      transition: color 0.2s;
+      &:hover {
+        color: $color-white;
+        svg path {
+          fill: $color-white;
+        }
+      }
     }
     &Arrow {
       transform: rotate(-90deg);
       width: 30px;
       height: auto;
+      path {
+        fill: $color-yellow;
+        transition: fill 0.2s;
+      }
     }
   }
 
